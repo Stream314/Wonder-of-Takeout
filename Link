@@ -1,0 +1,7 @@
+import { Linking } from 'react-native';
+
+const openCouponLink = (url) => {
+  Linking.canOpenURL(url).then(supported => {
+    if (supported) Linking.openURL(url);
+  });
+};
