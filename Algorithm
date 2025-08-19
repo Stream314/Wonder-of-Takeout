@@ -1,0 +1,8 @@
+const calculateBestCoupon = (coupons) => {
+  return coupons.sort((a, b) => {
+    // 按折扣率排序：(面额/门槛)
+    const ratioA = a.couponAmount / a.conditionAmount;
+    const ratioB = b.couponAmount / b.conditionAmount;
+    return ratioB - ratioA;
+  })[0]; // 返回最优券
+};
