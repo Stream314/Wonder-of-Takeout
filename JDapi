@@ -1,1 +1,25 @@
-https://jos.jd.com/
+###https://jos.jd.com/
+
+import axios from 'axios';
+
+const fetchJDCoupons = async (productId) => {
+  const params = {
+    method: 'jd.union.open.coupon.query',
+    app_key: 'YOUR_APP_KEY',
+    timestamp: new Date().toISOString(),
+    skuIds: productId, // 商品ID
+    couponMinAmount: 30 // 筛选条件
+  };
+
+  // 生成签名（参考京东签名算法）[6,8](@ref)
+  const sign = generateSign(params, appSecret);
+
+  try {
+    const response = await axios.get('https://api.jd.com/routerjson', {
+      params: { ...params, sign }
+    });
+    return response.data.couponList; // 优惠券列表
+  } catch (error) {
+    console.error("京东API请求失败", error);
+  }
+};
