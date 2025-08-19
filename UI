@@ -1,0 +1,13 @@
+import { FlatList } from 'react-native';
+
+const CouponList = ({ data }) => (
+  <FlatList
+    data={data}
+    renderItem={({ item }) => (
+      <View>
+        <Text>{item.platform} | 优惠:¥{item.amount}</Text>
+        <Text>条件:满¥{item.condition}使用</Text>
+      </View>
+    )}
+  />
+);
