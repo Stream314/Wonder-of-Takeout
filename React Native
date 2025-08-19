@@ -1,1 +1,6 @@
 npx react-native init CouponFinder
+
+网络请求：axios（HTTP客户端）
+导航：@react-navigation/native
+状态管理：redux或mobx（复杂数据流）
+UI组件库：react-native-elements或native-base
